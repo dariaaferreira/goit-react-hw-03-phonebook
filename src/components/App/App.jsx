@@ -11,17 +11,17 @@ export class App extends Component {
     filter: '',
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.contacts !== this.state.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-    }
-  };
-
   componentDidMount() {
     const savedContacts = localStorage.getItem('contacts');
     if (savedContacts !== null) {
       const parsedContacts = JSON.parse(savedContacts);
       this.setState({ contacts: parsedContacts });
+    }
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
   };
 
